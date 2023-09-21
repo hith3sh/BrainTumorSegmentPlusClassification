@@ -1,7 +1,5 @@
 from dependencies import *
 from unet import *
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
 
 app = Flask(__name__)
 
@@ -11,12 +9,13 @@ device = "cpu"
 segment_model = None
 path = "./model_state_dict.pt"
 data_transforms = None
-
+'''
 #for classification
 MODEL_PATH = 'modelres50.h5'
 classifier_model = load_model(MODEL_PATH)
 
 #for classification
+
 def model_predict(img_path, classifier_model):
     #convert .tif file to .jpg format
     with Image.open(img_path) as img:
@@ -26,7 +25,6 @@ def model_predict(img_path, classifier_model):
     
     #loading the image for classification
     img = image.load_img(img_path, target_size=(200,200)) 
-    
     # Preprocessing the image
     img = image.img_to_array(img)
     img = np.expand_dims(img, axis=0)
@@ -45,7 +43,7 @@ def model_predict(img_path, classifier_model):
         return str3
     else:
         return str2
-
+'''
 #for segmentation
 def image_loader(loader, image_name):
     image = Image.open(image_name)
@@ -63,13 +61,10 @@ def process_image(data_transforms, path_name, image_name, filemodel):
         plt.subplot(1,2,1)                      #original image 
         plt.imshow(np.squeeze(img.cpu().numpy()).transpose(1,2,0))
         plt.title('Original Image')
-        plt.axis('off')
 
         plt.subplot(1,2,2)                      #segmented image
         plt.imshow(np.squeeze(pred.cpu()) > .5)
         plt.title('Tumour Prediction')
-        plt.axis('off')
-
         plt.savefig("%s/%s-SEGMENTED.png" % (upload_folder, image_name), bbox_inches = "tight")
 
 
@@ -87,9 +82,10 @@ def upload_predict():
             #calling for segmentation
             process_image(data_transforms, image_location, image_name, segment_model)
             #calling for classification
-            predicted_tumor = model_predict(image_location, classifier_model)
+            #calling for classification
+            #predicted_tumor = model_predict(image_location, classifier_model)
 
-            return render_template("index.html", image_loc = ("%s-SEGMENTED.png" % image_name), predicted_tumor=predicted_tumor)
+            return render_template("index.html", image_loc = ("%s-SEGMENTED.png" % image_name))
             
     return render_template("index.html", prediction=0, image_loc=None)
 
