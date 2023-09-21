@@ -4,15 +4,9 @@ input/
 *.csv
 *.jpg
 __pycache__
-Dockerfile
-LICENSE.md
-.vscode
-.DS_Store
-whatever.py
 .ipynb_checkpoints
-.env/
-env/lib/
 brainMRI_Segment.hdf5
 model_state_dict.pt
 navinda 3 -only classification/
 Other project/
+env/
