@@ -3,7 +3,7 @@ from unet import *
 
 app = Flask(__name__)
 
-#for segmentation
+#For Segmentation
 upload_folder = "./static"
 device = "cpu"
 segment_model = None
