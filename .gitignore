@@ -1,6 +1,7 @@
 .vscode/
 input/
 *.bin
+env/
 *.csv
 *.jpg
 __pycache__

@@ -8,6 +8,7 @@ def conv_layer(input_channels, output_channels):
         nn.BatchNorm2d(output_channels),
         nn.ReLU(inplace=True)
     )
+    
     return conv
 
 

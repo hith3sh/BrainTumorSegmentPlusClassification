@@ -21,7 +21,6 @@ cloudpickle==2.2.1
 colorama @ file:///C:/ci_311/colorama_1676422310965/work
 comm @ file:///C:/ci_311/comm_1678376562840/work
 contourpy==1.1.0
-cryptography @ file:///C:/b/abs_13590mi9q9/croot/cryptography_1689373706078/work
 cycler==0.11.0
 debugpy @ file:///C:/b/abs_c0y1fjipt2/croot/debugpy_1690906864587/work
 decorator @ file:///opt/conda/conda-bld/decorator_1643638310831/work

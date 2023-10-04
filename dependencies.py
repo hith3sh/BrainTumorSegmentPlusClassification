@@ -6,7 +6,6 @@ import matplotlib
 import cv2
 import os
 import random
-from tqdm.notebook import tqdm
 from glob import glob
 from itertools import chain
 from PIL import Image
